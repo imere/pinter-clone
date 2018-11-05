@@ -14,7 +14,11 @@ const LocalStrategy = require('passport-local').Strategy
 const TwitterStrategy = require('passport-twitter').Strategy
 
 module.exports = (app) => {
-  app.use(helmet())
+  app.use(helmet({
+    hidePoweredBy: {
+      setTo: 'nginx'
+    }
+  }))
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({
     extended: true

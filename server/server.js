@@ -17,6 +17,8 @@ const PORT = process.env.PORT || 80
 
 app.use(express.static('dist'))
 
+app.use(require('compression')())
+
 require('./middleware')(app)
 require('./routes')(app)
 

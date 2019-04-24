@@ -16,43 +16,43 @@ module.exports = {
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
-        // hot: {
-        //   test: /[\\/]node_modules[\\/](.*hot.*)[\\/]/,
-        //   name: 'ch',
-        //   reuseExistingChunk: true,
-        // },
-        // loader: {
-        //   test: /[\\/]node_modules[\\/](.*loader.*)[\\/]/,
-        //   name: 'cl',
-        //   reuseExistingChunk: true,
-        // },
-        // vue: {
-        //   test: /[\\/]node_modules[\\/](vue.*)[\\/]/,
-        //   name: 'cv',
-        //   reuseExistingChunk: true,
-        // },
-        // http: {
-        //   test: /[\\/]node_modules[\\/](.*axios.*)[\\/]/,
-        //   name: 'ct',
-        //   reuseExistingChunk: true,
-        // },
-        // ui: {
-        //   test: /[\\/]node_modules[\\/](element.*)[\\/]/,
-        //   name: 'ce',
-        //   reuseExistingChunk: true,
-        // },
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          reuseExistingChunk: true
+        hot: {
+          test: /[\\/]node_modules[\\/](.*hot.*)[\\/]/,
+          name: 'ch',
+          reuseExistingChunk: true,
         },
-        commons: {
-          chunks: 'initial',
-          name: 'common',
-          minChunks: 1,
-          maxInitialRequests: 5,
-          minSize: 0
+        loader: {
+          test: /[\\/]node_modules[\\/](.*loader.*)[\\/]/,
+          name: 'cl',
+          reuseExistingChunk: true,
         },
+        vue: {
+          test: /[\\/]node_modules[\\/](vue.*)[\\/]/,
+          name: 'cv',
+          reuseExistingChunk: true,
+        },
+        http: {
+          test: /[\\/]node_modules[\\/](.*axios.*)[\\/]/,
+          name: 'ct',
+          reuseExistingChunk: true,
+        },
+        ui: {
+          test: /[\\/]node_modules[\\/](element.*)[\\/]/,
+          name: 'ce',
+          reuseExistingChunk: true,
+        },
+        // vendors: {
+        //   test: /[\\/]node_modules[\\/]/,
+        //   name: 'vendor',
+        //   reuseExistingChunk: true
+        // },
+        // commons: {
+        //   chunks: 'initial',
+        //   name: 'common',
+        //   minChunks: 1,
+        //   maxInitialRequests: 5,
+        //   minSize: 0
+        // },
       },
     },
     runtimeChunk: {

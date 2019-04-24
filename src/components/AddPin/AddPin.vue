@@ -57,14 +57,14 @@ export default class AddPin extends Vue {
     if (flag) {
       this.submitLoading = true;
       this.$http
-        .put(`${window.location.origin}/pins`, {
+        .put(`${window.location.origin}/v1/pins`, {
           title: this.link.title,
           url: this.link.url
         })
         .then(data => {
           this.submitLoading = false;
-          this.$message.success('Success')
-          this.reset('link')
+          this.$message.success("Success");
+          this.reset("link");
         })
         .catch(ex => {
           this.submitLoading = false;

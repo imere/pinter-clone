@@ -1,12 +1,12 @@
+const { validateUsername } = require('../../config/utils');
+
 const UserSchema = {
   username: {
     type: String,
     unique: true,
     validate: {
-      validator(value) {
-        return /^[a-zA-Z]{5,10}$/.test(value)
-      }
-    }
+      validator: validateUsername,
+    },
   },
   twitterid: {
     type: String,
@@ -18,7 +18,7 @@ const UserSchema = {
   lastlogin: {
     required: true,
     type: Date,
-  }
-}
+  },
+};
 
-module.exports = require('mongoose').model('users', UserSchema)
+module.exports = require('mongoose').model('users', UserSchema);

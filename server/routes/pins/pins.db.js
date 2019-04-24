@@ -1,16 +1,16 @@
 const PinSchema = {
   uid: {
     required: true,
-    type: String
+    type: String,
   },
   title: {
     required: true,
     type: String,
     validate: {
       validator(value) {
-        return /^.{1,40}$/.test(value)
-      }
-    }
+        return /^.{1,40}$/.test(value);
+      },
+    },
   },
   url: {
     required: true,
@@ -20,6 +20,6 @@ const PinSchema = {
     required: true,
     type: Date,
   },
-}
+};
 
-module.exports = require('mongoose').model('pins', PinSchema)
+module.exports = require('mongoose').model('pins', PinSchema);

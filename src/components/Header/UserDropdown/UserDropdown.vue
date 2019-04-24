@@ -3,10 +3,12 @@
     el-popover(v-if="$store.state.logged && $store.state.username", placement="bottom", trigger="click")
       span(slot="reference") {{$store.state.username}}
 
-      el-button(round, style="width: 100%;", @click="logout") SIGN OUT
+      el-button(round, style="width: 100%;", @click="logout").
+        SIGN OUT
 
     el-popover(v-else, placement="bottom", trigger="click")
-      span(slot="reference") Sign In
+      span(slot="reference").
+        Sign In
 
       el-form(ref="signInForm", :model="signInForm", :rules="toCreate ? signUpRules : signInRules", size="medium", status-icon)
         el-form-item(prop="username")
@@ -20,15 +22,20 @@
 
       el-row
         el-col
-          el-button(v-if="toCreate", round, type="primary", style="width: 100%", @click="submit('signInForm', true)", :loading="createBtnLoading") CREATE
-          el-button(v-else, round, type="primary", style="width: 100%", @click="submit('signInForm', false)", :loading="signInBtnLoading") SIGN IN
+          el-button(v-if="toCreate", round, type="primary", style="width: 100%", @click="submit('signInForm')", :loading="createBtnLoading").
+            CREATE
+          el-button(v-else, round, type="primary", style="width: 100%", @click="submit('signInForm')", :loading="signInBtnLoading").
+            SIGN IN
 
       el-row
         el-col(:span="6")
-          el-button(type="text", style="text-decoration: underline;", disabled) Twitter
+          el-button(type="text", style="text-decoration: underline;", disabled).
+            Twitter
         el-col(:span="toCreate ? 6 : 12", :offset="toCreate ? 12 : 6")
-          el-button(type="text", @click="reset('signInForm')") {{toCreate ? 'Sign In' : 'Create account'}}
+          el-button(type="text", @click="reset('signInForm')").
+            {{toCreate ? 'Sign In' : 'Create account'}}
 </template>
+
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 
@@ -99,7 +106,7 @@ export default class UserDropdown extends Vue {
       callback();
     }
   }
-  submit(formName: string, create?: any) {
+  submit(formName: string) {
     let flag = true as any;
     (this as any).$refs[formName].validate((valid: any) => {
       if (valid) {
@@ -111,12 +118,13 @@ export default class UserDropdown extends Vue {
     if (flag) {
       let username = this.signInForm.username;
       let password = this.signInForm.password;
-      if (create) {
+      if (this.toCreate) {
         this.createBtnLoading = true;
         this.$store
           .dispatch("create", { username, password })
           .then(_ => {
             this.createBtnLoading = false;
+            this.$message.success("success");
           })
           .catch(ex => {
             this.createBtnLoading = false;

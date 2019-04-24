@@ -5,6 +5,7 @@
     router-view
     Footer
 </template>
+
 <script lang="ts">
 import { Vue, Component, Watch } from "vue-property-decorator";
 import { Route } from "vue-router";
@@ -46,107 +47,66 @@ export default class App extends Vue {
   }
 }
 </script>
-<style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-li {
-  list-style-type: none;
-}
+<style lang="sass">
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
 
-a {
-  text-decoration: none;
-  &.router-link-exact-active {
-    font-weight: bold;
-  }
-}
+li
+  list-style-type: none
+
+a
+  text-decoration: none
+  &.router-link-exact-active
+    font-weight: bold
 
 a:hover,
-a:visited {
-  color: black;
-  text-decoration: none;
-}
+a:visited
+  color: black
+  text-decoration: none
 
-.cards {
-  column-count: 1;
-  column-gap: 5px;
-  .card {
-    max-width: 200px;
-    margin-bottom: 5px;
-    break-inside: avoid;
-    img {
-      width: 100%;
-      height: auto;
-    }
-  }
-}
+.cards
+  column-count: 1
+  column-gap: 5px
+  .card
+    max-width: 200px
+    margin-bottom: 5px
+    break-inside: avoid
+    img
+      width: 100%
+      height: auto
 
-.el-container {
-  padding: 0 10%;
-}
+.el-container
+  padding: 0 10%
 
-.el-main {
-  min-height: 100px;
-}
+.el-main
+  min-height: 100px
 
-@media all and (max-width: 850px) {
-  .el-container {
-    padding: 0 8%;
-  }
-}
+@media all and (max-width: 850px)
+  .el-container
+    padding: 0 8%
 
-@media all and (max-width: 700px) {
-  .el-container {
-    padding: 0 5%;
-  }
-}
+@media all and (max-width: 700px)
+  .el-container
+    padding: 0 5%
 
-@media all and (max-width: 550px) {
-  .el-container {
-    padding: 0;
-  }
-}
+@media all and (max-width: 550px)
+  .el-container
+    padding: 0
 
-@media all {
-  .cards {
-    @media (min-width: 200px) {
-      column-count: 2;
-    }
+@media all
+  .cards
+    @for $i from 1 through 10
+      @media (min-width: #{($i - 1) * 200 + 200}px)
+        column-count: #{$i + 1}
 
-    @media (min-width: 600px) {
-      column-count: 3;
-    }
+.fade-enter-active,
+.fade-leave-active
+  transition: opacity .5s
 
-    @media (min-width: 800px) {
-      column-count: 4;
-    }
-
-    @media (min-width: 1000px) {
-      column-count: 5;
-    }
-
-    @media (min-width: 1200px) {
-      column-count: 6;
-    }
-
-    @media (min-width: 1400px) {
-      column-count: 7;
-    }
-
-    @media (min-width: 1600px) {
-      column-count: 8;
-    }
-
-    @media (min-width: 1800px) {
-      column-count: 9;
-    }
-
-    @media (min-width: 2000px) {
-      column-count: 10;
-    }
-  }
-}
+.fade-enter,
+.fade-leave-to /* .fade-leave-active below version 2.1.8 */
+  opacity: 0
 </style>

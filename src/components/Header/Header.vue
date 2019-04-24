@@ -16,6 +16,7 @@
           el-menu-item(v-if="$store.state.logged", index="/my-pins" type="text", style="float: right;")
             router-link(to="/my-pins") My Pins
 </template>
+
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import UserDropdown from "./UserDropdown/UserDropdown.vue";
@@ -27,10 +28,9 @@ import UserDropdown from "./UserDropdown/UserDropdown.vue";
 })
 export default class Header extends Vue {}
 </script>
-<style lang="scss" scoped>
-@media all and (max-width: 600px) {
-  .el-menu-item {
-    font-size: 0.2rem;
-  }
-}
+
+<style lang="sass" scoped>
+@media all and (max-width: 600px)
+  .el-menu-item
+    font-size: 0.5rem
 </style>

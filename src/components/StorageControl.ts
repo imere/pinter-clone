@@ -1,38 +1,38 @@
 function sget(key: string): string {
   try {
-    let item = sessionStorage.getItem(key)
+    let item = sessionStorage.getItem(key);
     if (item !== null && item !== undefined) {
-      return item
+      return item;
     }
   } catch (ex) {
-    console.error('session failed')
-    return ''
+    console.error("session failed");
+    return "";
   }
-  return ''
+  return "";
 }
 function sset(key: string, value: string): boolean {
   try {
-    sessionStorage.setItem(key, value)
+    sessionStorage.setItem(key, value);
   } catch (ex) {
-    return false
+    return false;
   }
-  return true
+  return true;
 }
 function sremove(key: string): boolean {
   try {
-    sessionStorage.removeItem(key)
+    sessionStorage.removeItem(key);
   } catch (ex) {
-    return false
+    return false;
   }
-  return true
+  return true;
 }
 function sclear(): boolean {
   try {
-    sessionStorage.clear()
+    sessionStorage.clear();
   } catch (ex) {
-    return false
+    return false;
   }
-  return true
+  return true;
 }
 
-export { sget, sset, sremove, sclear }
+export { sget, sset, sremove, sclear };

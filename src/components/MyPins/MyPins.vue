@@ -10,10 +10,10 @@
               time(class="time") {{pin.date}}
               el-button(type="text" class="button", :data-id="pin.id", @click="del") DELETE
 </template>
+
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import { CancelTokenSource } from "axios";
-import { Loading } from "element-ui";
 
 @Component
 export default class MyPins extends Vue {
@@ -23,7 +23,7 @@ export default class MyPins extends Vue {
   getPins() {
     const loading = this.$loading({ target: ".cards" });
     this.$http
-      .post(`${window.location.origin}/pins`, {
+      .post(`${window.location.origin}/v1/pins`, {
         cancelToken: this.source.token
       })
       .then((data: any) => {
@@ -44,7 +44,7 @@ export default class MyPins extends Vue {
     let id = e.target.parentNode.dataset.id;
     if (!id) return;
     this.$http
-      .delete(`${window.location.origin}/pins/${id}`, {
+      .delete(`${window.location.origin}/v1/pins/${id}`, {
         validateStatus: function(status) {
           return status < 300;
         }
@@ -66,24 +66,21 @@ export default class MyPins extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
-.time {
-  font-size: 13px;
-  color: #999;
-}
 
-.bottom {
-  margin-top: 13px;
-  line-height: 12px;
-}
+<style lang="sass" scoped>
+.time
+  font-size: 13px
+  color: #999
+
+.bottom
+  margin-top: 13px
+  line-height: 12px
 
 .clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
+.clearfix:after
+  display: table
+  content: ""
 
-.clearfix:after {
-  clear: both;
-}
+.clearfix:after
+  clear: both
 </style>

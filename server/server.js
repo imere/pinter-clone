@@ -1,42 +1,24 @@
-require('dotenv').config()
-const http = require('http')
-const express = require('express')
-const history = require('connect-history-api-fallback')
-const fs = require('fs')
-const path = require('path')
+const http = require('http');
+const express = require('express');
+const {
+  FALLBACK_UURI,
+  FALLBACK_HOST,
+  FALLBACK_PORT,
+} = require('./config/config');
 
-require('mongoose').connect(process.env.uuri || 'mongodb://127.0.0.1:27017/test', {
-  useNewUrlParser: true
-})
+require('mongoose').connect(process.env.uuri || FALLBACK_UURI, {
+  useNewUrlParser: true,
+});
 
-const app = express()
-const server = http.createServer(app)
+const app = express();
+const server = http.createServer(app);
 
-const HOST = process.env.HOST || '0.0.0.0'
-const PORT = process.env.PORT || 80
+const HOST = process.env.HOST || FALLBACK_HOST;
+const PORT = process.env.PORT || FALLBACK_PORT;
 
-app.use(express.static('dist'))
-
-app.use(require('compression')())
-
-require('./middleware')(app)
-require('./routes')(app)
-
-app.use(history({
-  rewrites: [{
-    from: /.*/,
-    to: '/index.html'
-  }],
-  disableDotRule: true
-}))
-
-app.get('*', (req, res) => {
-  res.header({
-    'Content-Type': 'text/html'
-  })
-  res.send(fs.readFileSync(path.join('dist', 'index.html')))
-})
+require('./middleware')(app);
+require('./routes')(app);
 
 server.listen(PORT, HOST, () => {
-  console.log(`Listening on ${server.address().address}:${PORT}`)
-})
+  console.log(`Listening on ${server.address().address}:${PORT}`);
+});

@@ -33,7 +33,6 @@ require('node-bash-title')(currentEnv);
 
 const baseConfig = {
   entry: {
-    polyfill: 'babel-polyfill',
     app: './src/index.ts',
   },
   output: {

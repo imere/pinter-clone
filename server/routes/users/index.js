@@ -25,6 +25,7 @@ router.post('/create', (req, res) => {
       res.status(201).end();
     })
     .catch(ex => {
+      console.error(ex);
       if (ex.message && ex.message.indexOf('duplicate') >= 0) {
         return res.status(400).end('user exists');
       }
@@ -44,6 +45,7 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
       );
     })
     .catch(ex => {
+      console.error(ex);
       res.status(500).end();
     });
 });

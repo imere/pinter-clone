@@ -4,7 +4,7 @@
       div(v-for="pin in pins", class="card")
         trasition(name="fade")
           el-card(:body-style="{ padding: '0' }")
-            img(:src="pin.url", onerror="this.src = window.HOLDER")
+            img(:src="pin.url", onerror="this.src = window.HOLDER;this.onerror = undefined;")
             div(style="padding: 14px;")
               span {{pin.title}}
 </template>

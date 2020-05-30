@@ -26,6 +26,7 @@ router.get('/pins', (req, res) => {
       res.json(JSON.stringify(results));
     })
     .catch(ex => {
+      console.error(ex);
       res.status(500).end();
     });
 });
@@ -47,6 +48,7 @@ router.post('/pins', ensureLoggedIn(), (req, res) => {
       res.json(JSON.stringify(results));
     })
     .catch(ex => {
+      console.error(ex);
       res.status(500).end();
     });
 });
@@ -77,6 +79,7 @@ router.put('/pins', ensureLoggedIn(), (req, res) => {
       );
     })
     .catch(ex => {
+      console.error(ex);
       res.status(500).end();
     });
 });
@@ -99,6 +102,7 @@ router.delete('/pins/:id', ensureLoggedIn(), (req, res) => {
       res.status(204).end();
     })
     .catch(ex => {
+      console.error(ex);
       res.status(500).end();
     });
 });
